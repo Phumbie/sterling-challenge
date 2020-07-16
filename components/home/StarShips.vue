@@ -6,7 +6,11 @@
         <div class="col-6 col-md-4">
           <div class="star-ship-card">
             <div class="star-ship-image">
-              <img style="height: 100%; width: 100%" src="/images/starship-1.jpg" alt />
+              <img
+                style="height: 100%; width: 100%"
+                src="/images/starship-1.jpg"
+                alt
+              />
             </div>
             <div class="star-ship-body">
               <h5 class="star-ship_title">Ghost</h5>
@@ -24,7 +28,11 @@
         <div class="col-6 col-md-4">
           <div class="star-ship-card">
             <div class="star-ship-image">
-              <img style="height: 100%; width: 100%" src="/images/starship-1.jpg" alt />
+              <img
+                style="height: 100%; width: 100%"
+                src="/images/starship-1.jpg"
+                alt
+              />
             </div>
             <div class="star-ship-body">
               <h5 class="star-ship_title">Ghost</h5>
@@ -42,7 +50,11 @@
         <div class="col-6 col-md-4">
           <div class="star-ship-card">
             <div class="star-ship-image">
-              <img style="height: 100%; width: 100%" src="/images/starship-1.jpg" alt />
+              <img
+                style="height: 100%; width: 100%"
+                src="/images/starship-1.jpg"
+                alt
+              />
             </div>
             <div class="star-ship-body">
               <h5 class="star-ship_title">Ghost</h5>
@@ -58,8 +70,8 @@
           </div>
         </div>
       </div>
-      <div class="view-button text-center mt-4">
-        <button class="btn view-more">View more</button>
+      <div class="view-button text-center mt-5">
+        <button class="btn view-more">VIEW MORE</button>
       </div>
     </div>
   </div>
@@ -96,7 +108,7 @@ export default {};
 }
 .view-more {
   border: 1px solid black;
-  width: 50%;
+  width: 40%;
   margin: auto;
 }
 </style>

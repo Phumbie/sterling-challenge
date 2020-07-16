@@ -68,6 +68,10 @@ export default {
     {
       src: "plugins/skeleton",
       ssr: false
+    },
+    {
+      src: "plugins/glide",
+      ssr: false
     }
   ],
   /*
