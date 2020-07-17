@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Characters from "../../components/characters/characters";
+import Characters from "../../components/characterList/characterList";
 export default {
   components: {
     Characters

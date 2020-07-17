@@ -54,7 +54,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["@/assets/css/main.css"],
+  css: ["@/assets/css/main.css", "element-ui/lib/theme-chalk/index.css"],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -71,6 +71,10 @@ export default {
     },
     {
       src: "plugins/glide",
+      ssr: false
+    },
+    {
+      src: "plugins/element",
       ssr: false
     }
   ],
