@@ -1,59 +1,43 @@
 <template>
   <div>
-    <h4 class="text-center mt-5">Popular Planets</h4>
-    <div class="container text-center mt-5">
+    <Title title="Popular Planets" />
+    <div class="container text-center">
       <vue-glide :options="options">
-        <vue-glide-slide
-          ><div class="planet-card">
-            <img
-              style="width: 100%; height: 100%"
-              src="/images/planet-1.jpg"
-              alt=""
-            />
+        <vue-glide-slide>
+          <div class="planet-card">
+            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
             <div class="planet-name">
               <h5 class="text-center text-white">Coreilla</h5>
             </div>
-          </div></vue-glide-slide
-        >
-        <vue-glide-slide
-          ><div class="planet-card">
-            <img
-              style="width: 100%; height: 100%"
-              src="/images/planet-1.jpg"
-              alt=""
-            />
+          </div>
+        </vue-glide-slide>
+        <vue-glide-slide>
+          <div class="planet-card">
+            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
             <div class="planet-name">
               <h5 class="text-center text-white">Coreilla</h5>
             </div>
-          </div></vue-glide-slide
-        >
-        <vue-glide-slide
-          ><div class="planet-card">
-            <img
-              style="width: 100%; height: 100%"
-              src="/images/planet-1.jpg"
-              alt=""
-            />
+          </div>
+        </vue-glide-slide>
+        <vue-glide-slide>
+          <div class="planet-card">
+            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
             <div class="planet-name">
               <h5 class="text-center text-white">Coreilla</h5>
             </div>
-          </div></vue-glide-slide
-        >
-        <vue-glide-slide
-          ><div class="planet-card">
-            <img
-              style="width: 100%; height: 100%"
-              src="/images/planet-1.jpg"
-              alt=""
-            />
+          </div>
+        </vue-glide-slide>
+        <vue-glide-slide>
+          <div class="planet-card">
+            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
             <div class="planet-name">
               <h5 class="text-center text-white">Coreilla</h5>
             </div>
-          </div></vue-glide-slide
-        >
+          </div>
+        </vue-glide-slide>
         <template slot="control" class="control glide__bullets">
           <button data-glide-dir="=0" class="button-control"></button>
-          <button data-glide-dir="=1" class=" button button-control"></button>
+          <button data-glide-dir="=1" class="button button-control"></button>
           <button data-glide-dir="=2" class="button button-control"></button>
           <button data-glide-dir="=3" class="button button-control"></button>
         </template>
@@ -62,7 +46,11 @@
   </div>
 </template>
 <script>
+import Title from "../partials/title";
 export default {
+  components: {
+    Title
+  },
   data() {
     return {
       options: {
