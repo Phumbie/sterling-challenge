@@ -4,11 +4,12 @@
       <Title title="Popular Characters" />
 
       <div class="row mt-4">
-        <div class="col-12 col-md-6">
-          <CharacterCard />
-        </div>
-        <div class="col-12 col-md-6">
-          <CharacterCard />
+        <div
+          class="col-12 col-md-6"
+          v-for="character in characters"
+          :key="character.name"
+        >
+          <CharacterCard :profile="character" />
         </div>
       </div>
       <div class="view-character-button mt-5">
@@ -24,7 +25,22 @@ export default {
   components: {
     Title,
     CharacterCard
-  }
+  },
+  data() {
+    return {
+      // characters: []
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getCharacters");
+    console.lo;
+  },
+  computed: {
+    characters() {
+      return this.$store.state.characters;
+    }
+  },
+  methods: {}
 };
 </script>
 <style scoped>

@@ -5,18 +5,20 @@
       <div class="row profile-card">
         <div class="col-md-7 p-0">
           <div class="profile-card_picture">
-            <img style="width:100%; height: 100%" src="/images/character-1.jpg" alt="picture-img" />
+            <img
+              style="width:100%; height: 100%"
+              src="/images/character-1.jpg"
+              alt="picture-img"
+            />
           </div>
         </div>
         <div class="col-md-5">
           <div class="profile-card_content d-flex align-items-center p-2">
             <div>
-              <h6>Luke Skywalker</h6>
-              <p class="mt-2">Son of Anakin</p>
+              <h6>{{ profile.name }}</h6>
+              <p class="mt-2">{{ profile.birth_year }}</p>
               <p>
-                Luke Skywalker, a Force sensitive human male, was a lengendary
-                Jedi Master who fought in the Galactice civil war during the
-                reign of the Galactic empire..
+                {{ profile.gender }}
               </p>
             </div>
           </div>
@@ -26,7 +28,23 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["profile"],
+  data() {
+    return {
+      // profilePicture: require(`@/static/images/character-${image}.jpg`),
+      image: Math.random() * (4 - 1) + 1
+    };
+  },
+  computed: {
+    image() {
+      return;
+    }
+  },
+  mounted() {
+    console.log(this.profile);
+  }
+};
 </script>
 <style scoped>
 .profile-card_picture {

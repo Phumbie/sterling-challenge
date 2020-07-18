@@ -78,6 +78,10 @@ export default {
       ssr: false
     }
   ],
+  axios: {
+    baseURL: process.env.API_BASE_URL
+    // See https://github.com/nuxt-community/axios-module#options
+  },
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -90,7 +94,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ["@nuxtjs/axios"],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
