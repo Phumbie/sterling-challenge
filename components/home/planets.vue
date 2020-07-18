@@ -2,36 +2,14 @@
   <div>
     <Title title="Popular Planets" />
     <div class="container text-center">
-      <vue-glide :options="options">
-        <vue-glide-slide>
+      <vue-glide :options="options" v-if="planets.length">
+        <vue-glide-slide v-for="planet in planets" :key="planet.name">
           <div class="planet-card">
-            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
+            <img style="width: 100%; height: 100%" :src="planetImage" alt />
             <div class="planet-name">
-              <h5 class="text-center text-white">Coreilla</h5>
-            </div>
-          </div>
-        </vue-glide-slide>
-        <vue-glide-slide>
-          <div class="planet-card">
-            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
-            <div class="planet-name">
-              <h5 class="text-center text-white">Coreilla</h5>
-            </div>
-          </div>
-        </vue-glide-slide>
-        <vue-glide-slide>
-          <div class="planet-card">
-            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
-            <div class="planet-name">
-              <h5 class="text-center text-white">Coreilla</h5>
-            </div>
-          </div>
-        </vue-glide-slide>
-        <vue-glide-slide>
-          <div class="planet-card">
-            <img style="width: 100%; height: 100%" src="/images/planet-1.jpg" alt />
-            <div class="planet-name">
-              <h5 class="text-center text-white">Coreilla</h5>
+              <h5 class="text-center text-white">{{ planet.name }}</h5>
+              <h6 class="text-center text-white">{{ planet.population }}</h6>
+              <small class="text-center text-white">{{ planet.climate }}</small>
             </div>
           </div>
         </vue-glide-slide>
@@ -74,9 +52,28 @@ export default {
         activeNav: "glide__bullet--active",
         activeSlide: "glide__slide--active",
         disabledArrow: "glide__arrow--disabled"
-      }
+      },
+      image: Math.round(Math.random() * (3 - 1) + 1)
     };
+  },
+  mounted() {
+    this.$store.dispatch("getPlanets");
+    // .then(console.log(this.$store.state.planet));
+  },
+  computed: {
+    planets() {
+      return this.$store.state.planet;
+      console.log(this.$store.state.planet);
+    },
+    planetImage() {
+      return `/images/planet-${this.image}.jpg`;
+    }
   }
+  // methods: {
+  //   callPlanet() {
+  //     return this.$store.state.planet;
+  //   }
+  // }
 };
 </script>
 <style scoped>

@@ -10,25 +10,6 @@ const createStore = () => {
     getters,
     mutations,
     actions
-    // state: () => ({
-    //   characters: []
-    // }),
-    // mutations: {
-    //   addCharacters(state, arr) {
-    //     state.characters = arr.data.results;
-    //     // console.log(state.characters);
-    //   }
-    // },
-    // actions: {
-    //   async getPeople({ commit }) {
-    //     try {
-    //       const people = await this.$axios.get("/people");
-    //       commit("addCharacters", people);
-    //     } catch (err) {
-    //       console.log(err);
-    //     }
-    //   }
-    // }
   });
 };
 export default createStore;

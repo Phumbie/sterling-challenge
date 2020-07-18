@@ -13,8 +13,12 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-6" v-for="i in 8" :key="i">
-          <CharacterCard />
+        <div
+          class="col-12 col-md-6"
+          v-for="allCharacter in allCharacters"
+          :key="allCharacter.name"
+        >
+          <CharacterCard :profile="allCharacter" />
         </div>
       </div>
       <Pagination />
@@ -35,6 +39,14 @@ export default {
     return {
       gender: ""
     };
+  },
+  mounted() {
+    this.$store.dispatch("getAllCharacters");
+  },
+  computed: {
+    allCharacters() {
+      return this.$store.state.allCharacters;
+    }
   }
 };
 </script>

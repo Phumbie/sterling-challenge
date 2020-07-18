@@ -3,14 +3,14 @@
     <div class="p-2">
       <div class="star-ship-card">
         <div class="star-ship-image">
-          <img style="height: 100%; width: 100%" src="/images/starship-1.jpg" alt />
+          <img style="height: 100%; width: 100%" :src="starshipImage" alt />
         </div>
         <div class="star-ship-body">
-          <h5 class="star-ship_title">Ghost</h5>
-          <small class="text-justify">
-            The Ghost is a modified VCX 100 light freighter, manufactured by
-            the Correlaian Engineering Corporation
-          </small>
+          <h5 class="star-ship_title">{{ starship.name }}</h5>
+          <p class="text-justify">
+            {{ starship.model }}
+          </p>
+          <p>{{ starship.cargo_capacity }}</p>
           <br />
           <div class="star-ship_button mt-2">
             <button class="read">Read more →</button>
@@ -21,7 +21,19 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["starship"],
+  data() {
+    return {
+      image: Math.round(Math.random() * (6 - 1) + 1)
+    };
+  },
+  computed: {
+    starshipImage() {
+      return `/images/starship-${this.image}.jpg`;
+    }
+  }
+};
 </script>
 <style scoped>
 .star-ship-card {
@@ -31,7 +43,7 @@ export default {};
   padding-bottom: 10px;
 }
 .star-ship-image {
-  /* height: 7rem; */
+  height: 12rem;
   position: relative;
 }
 .star-ship-body {

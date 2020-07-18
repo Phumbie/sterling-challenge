@@ -1,13 +1,12 @@
 <template>
   <div>
-    <!-- <div class="col-12 col-md-6"> -->
     <div class="container-fluid p-3">
       <div class="row profile-card">
         <div class="col-md-7 p-0">
           <div class="profile-card_picture">
             <img
               style="width:100%; height: 100%"
-              src="/images/character-1.jpg"
+              :src="images"
               alt="picture-img"
             />
           </div>
@@ -33,26 +32,28 @@ export default {
   data() {
     return {
       // profilePicture: require(`@/static/images/character-${image}.jpg`),
-      image: Math.random() * (4 - 1) + 1
+      image: Math.round(Math.random() * (4 - 1) + 1)
     };
   },
   computed: {
-    image() {
-      return;
+    images() {
+      return `/images/character-${this.image}.jpg`;
     }
   },
   mounted() {
-    console.log(this.profile);
+    // console.log(this.profile);
   }
 };
 </script>
 <style scoped>
 .profile-card_picture {
   /* width: 60%; */
+  height: 15rem;
 }
 .profile-card {
   background-color: #f5f5f5;
   /* width: 40%; */
+  min-height: 15rem;
 }
 .profile-card_content {
   height: 100%;

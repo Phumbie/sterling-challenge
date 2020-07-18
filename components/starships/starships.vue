@@ -3,8 +3,12 @@
     <Title title="Popular Starships" />
     <div class="container">
       <div class="row">
-        <div class="col-md-4" v-for="i in 9" :key="i">
-          <Starships />
+        <div
+          class="col-md-4"
+          v-for="allStarShip in allStarShips"
+          :key="allStarShip.name"
+        >
+          <Starships :starship="allStarShip" />
         </div>
       </div>
       <Pagination />
@@ -20,6 +24,16 @@ export default {
     Title,
     Starships,
     Pagination
+  },
+  mounted() {
+    this.$store.dispatch("getAllStarships");
+    // this.$store.dispatch("getCharacters");
+  },
+
+  computed: {
+    allStarShips() {
+      return this.$store.state.allStarShip;
+    }
   }
 };
 </script>

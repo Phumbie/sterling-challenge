@@ -2,7 +2,6 @@
   <div>
     <div class="container my-5">
       <Title title="Popular Characters" />
-
       <div class="row mt-4">
         <div
           class="col-12 col-md-6"
@@ -13,7 +12,9 @@
         </div>
       </div>
       <div class="view-character-button mt-5">
-        <button class="btn view-more">VIEW MORE</button>
+        <Nuxt-Link to="/characters"
+          ><button class="btn view-more">VIEW MORE</button></Nuxt-Link
+        >
       </div>
     </div>
   </div>
@@ -33,7 +34,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getCharacters");
-    console.lo;
   },
   computed: {
     characters() {
