@@ -5,7 +5,12 @@
     <div class="container">
       <div class="d-flex">
         <p class="my-auto mr-2">Filter:</p>
-        <el-select v-model="gender" filterable placeholder="select">
+        <el-select
+          v-model="gender"
+          filterable
+          placeholder="select"
+          @change="chooseGender"
+        >
           <el-option label="Male" value="male"> </el-option>
           <el-option label="Female" value="female"> </el-option>
           <el-option label="Robot" value="robot"> </el-option>
@@ -15,7 +20,7 @@
       <div class="row">
         <div
           class="col-12 col-md-6"
-          v-for="allCharacter in allCharacters"
+          v-for="allCharacter in filteredCharacters"
           :key="allCharacter.name"
         >
           <CharacterCard :profile="allCharacter" />
@@ -41,11 +46,21 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("getAllCharacters");
+    this.$store.dispatch("getAllCharacters", this.gender);
   },
   computed: {
     allCharacters() {
       return this.$store.state.allCharacters;
+    },
+    filteredCharacters() {
+      return this.$store.state.allCharacters.filter(character => {
+        return character.gender.includes(this.gender);
+      });
+    }
+  },
+  methods: {
+    chooseGender() {
+      this.$store.dispatch("getAllCharacters");
     }
   }
 };
