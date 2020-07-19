@@ -10,7 +10,6 @@ export const getCharacters = async function({ commit }) {
 export const getStarships = async function({ commit }) {
   try {
     const starShips = await this.$axios.get("/starships/");
-    // console.log(starShips);
     commit("ADD_STARSHIP", starShips);
   } catch (err) {
     console.log(err);
@@ -27,11 +26,15 @@ export const getPlanets = async function({ commit }) {
   }
 };
 
-export const getAllStarships = async function({ commit }, currentPage) {
+export const getAllStarships = async function({ commit }, arg) {
+  let allStarShips;
+  if (typeof arg === "string") {
+    allStarShips = await this.$axios.get(`/starships/?page=1&search=${arg}`);
+  } else {
+    allStarShips = await this.$axios.get(`/starships/?page=${arg}`);
+  }
   try {
-    const allStarShips = await this.$axios.get(
-      `/starships/?page=${currentPage}`
-    );
+    allStarShips;
     commit("ADD_ALL_STARSHIPS", allStarShips);
   } catch (err) {
     console.log(err);
@@ -41,13 +44,36 @@ export const getAllStarships = async function({ commit }, currentPage) {
 export const getAllCharacters = async function({ commit }, arg) {
   let allCharacters;
   if (typeof arg === "string") {
-    allCharacters = await this.$axios.get(`/people/?search=${arg}`);
+    allCharacters = await this.$axios.get(`/people/?page=1&search=${arg}`);
   } else {
     allCharacters = await this.$axios.get(`/people/?page=${arg}`);
   }
   try {
     allCharacters;
     commit("ADD_ALL_CHARACTERS", allCharacters);
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getAllPlanets = async function({ commit }, arg) {
+  let allPlanets;
+  if (typeof arg === "string") {
+    allPlanets = await this.$axios.get(`/planets/?page=1&search=${arg}`);
+  } else {
+    allPlanets = await this.$axios.get(`/planets/?page=${arg}`);
+  }
+  try {
+    allPlanets;
+    commit("ADD_ALL_PLANETS", allPlanets);
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const getSingleCharacter = async function({ commit }, id) {
+  try {
+    let character = await this.$axios.get(`/people/${id}`);
+    // console.log(character);
+    commit("GET_SINGLE_CHARACTER", character);
   } catch (err) {
     console.log(err);
   }

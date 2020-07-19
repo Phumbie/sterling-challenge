@@ -20,6 +20,7 @@
       <p class="text-white text-center header-brief mt-3">
         Find your favorite Characters,Films,Species, Starships and Planets
       </p>
+      <!-- <div class="container"> -->
       <div class="search mt-3">
         <div class="input-group flex-nowrap">
           <div class="input-group-prepend">
@@ -44,6 +45,7 @@
                 </g></svg
             ></span>
           </div>
+
           <input
             type="text"
             class="form-control"
@@ -55,6 +57,7 @@
           />
         </div>
       </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>

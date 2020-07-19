@@ -11,7 +11,7 @@
           <CharacterCard :profile="character" />
         </div>
       </div>
-      <div class="view-character-button mt-5">
+      <div class="view-character-button mt-3">
         <Nuxt-Link to="/characters"
           ><button class="btn view-more">VIEW MORE</button></Nuxt-Link
         >

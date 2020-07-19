@@ -21,3 +21,11 @@ export const ADD_ALL_CHARACTERS = (state, val) => {
   state.allCharactersCount = val.data.count;
   console.log(state.allCharacters);
 };
+export const ADD_ALL_PLANETS = (state, val) => {
+  state.allPlanets = val.data.results;
+  state.allPlanetsCount = val.data.count;
+  //   console.log(state.allPlanets, state.allPlanetsCount);
+};
+export const GET_SINGLE_CHARACTER = (state, val) => {
+  state.singleCharacter = val.data;
+};

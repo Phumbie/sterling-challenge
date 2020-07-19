@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <Header @search="search" /> -->
     <Title title="Popular Starships" />
     <div class="container">
       <div class="row">
@@ -15,11 +16,13 @@
         @next="next"
         @previous="previous"
         :totalResults="$store.state.allStarshipsCount"
+        :totalPgaes="totalPages"
       />
     </div>
   </div>
 </template>
 <script>
+import Header from "../partials/header";
 import Title from "../partials/title";
 import Starships from "../partials/starshipCard";
 import Pagination from "../partials/pagination";
@@ -27,26 +30,31 @@ export default {
   components: {
     Title,
     Starships,
-    Pagination
+    Pagination,
+    Header
   },
   data() {
     return {
       currentPage: 1,
-      totalPages: Math.ceil(this.$store.state.allStarshipsCount / 10)
+      lastItemOnPage: null,
+      firstItemOnPage: null
     };
   },
   mounted() {
     this.$store.dispatch("getAllStarships", this.currentPage);
   },
-
   computed: {
     allStarShips() {
       return this.$store.state.allStarShip;
+    },
+    totalPages() {
+      return Math.ceil(this.$store.state.allStarshipsCount / 10);
     }
   },
   methods: {
     next() {
       if (this.currentPage < this.totalPages) {
+        console.log(this.currentPage);
         this.currentPage++;
         this.$store.dispatch("getAllStarships", this.currentPage);
       }
@@ -56,6 +64,10 @@ export default {
         this.currentPage--;
         this.$store.dispatch("getAllStarships", this.currentPage);
       }
+    },
+    search(val) {
+      this.$store.dispatch("getAllStarships", val.toString());
+      console.log(val);
     }
   }
 };

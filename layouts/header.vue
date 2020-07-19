@@ -8,19 +8,19 @@
           alt="logo"
         />
       </div>
-      <div class="logo-image heading d-flex justify-content-center">
+      <!-- <div class="logo-image heading d-flex justify-content-center">
         <img
           style="height: 2rem; width: 3.5rem"
           src="/images/logo.png"
           alt="logo"
         />
         <h5 class="text-white  ml-2 my-auto">Directory</h5>
-      </div>
-      <hr class="hr-line my-1" />
+      </div> -->
+      <!-- <hr class="hr-line my-1" /> -->
       <p class="text-white text-center header-brief mt-3">
         Find your favorite Characters,Films,Species, Starships and Planets
       </p>
-      <div class="search mt-3">
+      <!-- <div class="search mt-3">
         <div class="input-group flex-nowrap">
           <div class="input-group-prepend">
             <span class="input-group-text" id="addon-wrapping"
@@ -54,7 +54,7 @@
             v-model="search"
           />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -88,7 +88,7 @@ h1 {
 .logo {
   position: absolute;
   top: 2rem;
-  left: 2rem;
+  /* left: 2rem; */
   height: 2.5rem;
   width: 4rem;
 }
@@ -100,7 +100,11 @@ h1 {
 }
 .header-brief {
   font-size: 1.2rem;
-  width: 70%;
+  /* width: 70%; */
+  margin: auto;
+}
+.search {
+  /* width: 70%; */
   margin: auto;
 }
 </style>

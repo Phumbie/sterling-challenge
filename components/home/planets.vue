@@ -1,17 +1,10 @@
 <template>
-  <div>
+  <div class="mt-5">
     <Title title="Popular Planets" />
     <div class="container text-center">
       <vue-glide :options="options" v-if="planets.length">
         <vue-glide-slide v-for="planet in planets" :key="planet.name">
-          <div class="planet-card">
-            <img style="width: 100%; height: 100%" :src="planetImage" alt />
-            <div class="planet-name">
-              <h5 class="text-center text-white">{{ planet.name }}</h5>
-              <h6 class="text-center text-white">{{ planet.population }}</h6>
-              <small class="text-center text-white">{{ planet.climate }}</small>
-            </div>
-          </div>
+          <Planet :planet="planet" />
         </vue-glide-slide>
         <template slot="control" class="control glide__bullets">
           <button data-glide-dir="=0" class="button-control"></button>
@@ -21,13 +14,20 @@
         </template>
       </vue-glide>
     </div>
+    <div class="view-planet-button container mt-3">
+      <Nuxt-Link to="/planets"
+        ><button class="btn view-more">VIEW MORE</button></Nuxt-Link
+      >
+    </div>
   </div>
 </template>
 <script>
 import Title from "../partials/title";
+import Planet from "../partials/planetCard";
 export default {
   components: {
-    Title
+    Title,
+    Planet
   },
   data() {
     return {
@@ -69,11 +69,6 @@ export default {
       return `/images/planet-${this.image}.jpg`;
     }
   }
-  // methods: {
-  //   callPlanet() {
-  //     return this.$store.state.planet;
-  //   }
-  // }
 };
 </script>
 <style scoped>
@@ -107,5 +102,14 @@ export default {
 } */
 .glide__bullet--active {
   background-color: yellow;
+}
+
+.view-planet-button {
+  text-align: center;
+}
+.view-more {
+  padding: 0.5rem;
+  width: 40%;
+  border: 1px solid black;
 }
 </style>

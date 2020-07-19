@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="pagination d-flex justify-content-center m-3">
-      <p class="text-center my-auto mr-2">1 - 8 of {{ totalResults }}</p>
+      <p class="text-center my-auto mr-2">
+        {{ firstItemOnPage }} - {{ lastItemOnPage }} of {{ totalResults }}
+      </p>
       <div class="button d-flex">
         <button class="navigation left" @click="previous"><</button>
         <button class="navigation right" @click="next">></button>
@@ -11,7 +13,8 @@
 </template>
 <script>
 export default {
-  props: ["totalResults", "totalPages"],
+  props: ["totalResults", "totalPages", "firstItemOnPage", "lastItemOnPage"],
+  computed: {},
   methods: {
     next() {
       this.$emit("next");

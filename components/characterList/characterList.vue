@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header @search="search" />
+    <!-- <Header @search="search" /> -->
     <Title title="Starwars Characters" />
 
     <div class="container">
@@ -25,6 +25,8 @@
       <Pagination
         @previous="previous"
         @next="next"
+        :firstItemOnPage="firstItemOnPage"
+        :lastItemOnPage="lastItemOnPage"
         :totalResults="$store.state.allCharactersCount"
         :totalPages="totalPages"
       />
@@ -47,11 +49,20 @@ export default {
     return {
       gender: "",
       currentPage: 1,
-      totalPages: Math.ceil(this.$store.state.allCharactersCount / 10)
+      lastItemOnPage: null,
+      firstItemOnPage: null
     };
   },
   mounted() {
     this.$store.dispatch("getAllCharacters", this.currentPage);
+    if (this.totalPages == 1) {
+      this.firstItemOnPage = 1;
+      this.lastItemOnPage = this.$store.state.allCharactersCount;
+    } else {
+      // DEFAULT WHEN PAGE LOADS AND WE HAVE MORE THAN ONE PAGE
+      this.firstItemOnPage = 1;
+      this.lastItemOnPage = 10;
+    }
   },
   computed: {
     filteredCharacters() {
@@ -59,14 +70,29 @@ export default {
       return newList.filter(character => {
         return character.gender.includes(this.gender);
       });
+    },
+    totalPages() {
+      return Math.ceil(this.$store.state.allCharactersCount / 10);
+    },
+    totalItems() {
+      return this.$store.state.allCharactersCount;
     }
   },
   methods: {
     next() {
+      console.log("next called");
       if (this.currentPage < this.totalPages) {
-        // console.log(this.totalPages);
         this.currentPage++;
         this.$store.dispatch("getAllCharacters", this.currentPage);
+      }
+      if (this.lastItemOnPage + 10 < this.totalItems) {
+        // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
+        this.firstItemOnPage = this.lastItemOnPage + 1;
+        this.lastItemOnPage = this.firstItemOnPage + 9;
+      } else {
+        // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
+        this.firstItemOnPage = this.lastItemOnPage + 1;
+        this.lastItemOnPage = this.totalItems;
       }
     },
     previous() {
@@ -76,8 +102,7 @@ export default {
       }
     },
     search(val) {
-      this.$store.dispatch("getAllCharacters", val);
-      console.log(val);
+      this.$store.dispatch("getAllCharacters", val.toString());
     }
   }
 };

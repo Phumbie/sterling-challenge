@@ -11,7 +11,7 @@
           <StarshipCard :starship="starship" />
         </div>
       </div>
-      <div class="view-button text-center mt-5">
+      <div class="view-button text-center mt-3">
         <Nuxt-Link to="/starships"
           ><button class="btn view-more">VIEW MORE</button>
         </Nuxt-Link>

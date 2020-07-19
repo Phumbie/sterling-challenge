@@ -5,7 +5,10 @@ const state = () => ({
   allStarShip: [],
   allCharacters: [],
   allCharactersCount: "",
-  allStarshipsCount: ""
+  allStarshipsCount: "",
+  allPlanets: [],
+  allPlanetsCount: "",
+  singleCharacter: ""
 });
 
 export default state;

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container-fluid p-3">
-      <div class="row profile-card">
+      <div class="row profile-card" @click="viewPerson">
         <div class="col-md-7 p-0">
           <div class="profile-card_picture">
             <img
@@ -41,6 +41,12 @@ export default {
   },
   mounted() {
     // console.log(this.profile);
+  },
+  methods: {
+    viewPerson() {
+      let id = new URL(this.profile.url).pathname.slice(12);
+      this.$router.push(`/characters/${id}`);
+    }
   }
 };
 </script>
