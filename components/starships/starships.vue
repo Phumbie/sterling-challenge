@@ -11,7 +11,11 @@
           <Starships :starship="allStarShip" />
         </div>
       </div>
-      <Pagination />
+      <Pagination
+        @next="next"
+        @previous="previous"
+        :totalResults="$store.state.allStarshipsCount"
+      />
     </div>
   </div>
 </template>
@@ -25,14 +29,33 @@ export default {
     Starships,
     Pagination
   },
+  data() {
+    return {
+      currentPage: 1,
+      totalPages: Math.ceil(this.$store.state.allStarshipsCount / 10)
+    };
+  },
   mounted() {
-    this.$store.dispatch("getAllStarships");
-    // this.$store.dispatch("getCharacters");
+    this.$store.dispatch("getAllStarships", this.currentPage);
   },
 
   computed: {
     allStarShips() {
       return this.$store.state.allStarShip;
+    }
+  },
+  methods: {
+    next() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+        this.$store.dispatch("getAllStarships", this.currentPage);
+      }
+    },
+    previous() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        this.$store.dispatch("getAllStarships", this.currentPage);
+      }
     }
   }
 };

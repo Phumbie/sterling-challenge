@@ -45,13 +45,13 @@
             ></span>
           </div>
           <input
-            @keydown.enter="submit"
             type="text"
             class="form-control"
             placeholder="Enter a search term"
             aria-label="Username"
             aria-describedby="addon-wrapping"
             v-model="search"
+            @keyup.enter="submit"
           />
         </div>
       </div>
@@ -67,8 +67,8 @@ export default {
   },
   methods: {
     submit() {
-      console.log("hi");
       this.$emit("search", this.search);
+      // this.search = "";
     }
   }
 };
@@ -76,7 +76,7 @@ export default {
 <style scoped>
 .header {
   background-image: url("/images/hero-banner.jpg");
-  /* background-color: green; */
+
   height: 25rem;
   display: flex;
   align-items: center;

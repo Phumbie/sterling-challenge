@@ -12,8 +12,8 @@
           </p>
           <p>{{ starship.cargo_capacity }}</p>
           <br />
-          <div class="star-ship_button mt-2">
-            <button class="read">Read more →</button>
+          <div class="star-ship_button mt-2 d-flex">
+            <button class="read ml-auto">Read more →</button>
           </div>
         </div>
       </div>
@@ -57,6 +57,7 @@ export default {
 .read {
   border: none;
   border-radius: 2px;
-  padding: 0.3rem;
+  padding: 0.4rem;
+  background-color: #bfc1c2;
 }
 </style>

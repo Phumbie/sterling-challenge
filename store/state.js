@@ -3,7 +3,9 @@ const state = () => ({
   starship: [],
   planet: [],
   allStarShip: [],
-  allCharacters: []
+  allCharacters: [],
+  allCharactersCount: "",
+  allStarshipsCount: ""
 });
 
 export default state;

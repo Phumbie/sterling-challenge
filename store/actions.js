@@ -27,18 +27,26 @@ export const getPlanets = async function({ commit }) {
   }
 };
 
-export const getAllStarships = async function({ commit }) {
+export const getAllStarships = async function({ commit }, currentPage) {
   try {
-    const allStarShips = await this.$axios.get("/starships/");
+    const allStarShips = await this.$axios.get(
+      `/starships/?page=${currentPage}`
+    );
     commit("ADD_ALL_STARSHIPS", allStarShips);
   } catch (err) {
     console.log(err);
   }
 };
 
-export const getAllCharacters = async function({ commit }) {
+export const getAllCharacters = async function({ commit }, arg) {
+  let allCharacters;
+  if (typeof arg === "string") {
+    allCharacters = await this.$axios.get(`/people/?search=${arg}`);
+  } else {
+    allCharacters = await this.$axios.get(`/people/?page=${arg}`);
+  }
   try {
-    const allCharacters = await this.$axios.get("/people/");
+    allCharacters;
     commit("ADD_ALL_CHARACTERS", allCharacters);
   } catch (err) {
     console.log(err);

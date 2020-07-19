@@ -31,7 +31,6 @@ export default {
   props: ["profile"],
   data() {
     return {
-      // profilePicture: require(`@/static/images/character-${image}.jpg`),
       image: Math.round(Math.random() * (4 - 1) + 1)
     };
   },
