@@ -96,7 +96,7 @@ export const getAllPlanets = async function({ commit }, arg) {
 export const getSingleCharacter = async function({ commit }, id) {
   commit("SET_LOADING", true);
   try {
-    let character = await this.$axios.get(`/people/${id}`);
+    let character = await this.$axios.get(`/people/${id}/`);
     commit("GET_SINGLE_CHARACTER", character);
     commit("SET_LOADING", false);
   } catch (err) {
@@ -108,7 +108,7 @@ export const getSingleCharacter = async function({ commit }, id) {
 export const getSingleSpaceship = async function({ commit }, id) {
   commit("SET_LOADING", true);
   try {
-    let starship = await this.$axios.get(`/starships/${id}`);
+    let starship = await this.$axios.get(`/starships/${id}/`);
     commit("GET_SINGLE_STARSHIP", starship);
     commit("SET_LOADING", false);
   } catch (err) {
@@ -116,11 +116,12 @@ export const getSingleSpaceship = async function({ commit }, id) {
 
     console.log(err);
   }
+  console.log("getSingleSpaceship called");
 };
 export const getSinglePlanet = async function({ commit }, id) {
   commit("SET_LOADING", true);
   try {
-    let planet = await this.$axios.get(`/planets/${id}`);
+    let planet = await this.$axios.get(`/planets/${id}/`);
     commit("GET_SINGLE_PLANET", planet);
     commit("SET_LOADING", false);
   } catch (err) {
