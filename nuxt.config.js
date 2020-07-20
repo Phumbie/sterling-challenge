@@ -82,6 +82,9 @@ export default {
       ssr: false
     }
   ],
+  generate: {
+    fallback: true
+  },
   axios: {
     baseURL: process.env.API_BASE_URL
     // See https://github.com/nuxt-community/axios-module#options
