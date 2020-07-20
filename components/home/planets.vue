@@ -58,12 +58,10 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getPlanets");
-    // .then(console.log(this.$store.state.planet));
   },
   computed: {
     planets() {
       return this.$store.state.planet;
-      console.log(this.$store.state.planet);
     },
     planetImage() {
       return `/images/planet-${this.image}.jpg`;

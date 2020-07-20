@@ -116,7 +116,6 @@ export const getSingleSpaceship = async function({ commit }, id) {
 
     console.log(err);
   }
-  console.log("getSingleSpaceship called");
 };
 export const getSinglePlanet = async function({ commit }, id) {
   commit("SET_LOADING", true);

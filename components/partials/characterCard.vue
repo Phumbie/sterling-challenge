@@ -39,9 +39,7 @@ export default {
       return `/images/character-${this.image}.jpg`;
     }
   },
-  mounted() {
-    // console.log(this.profile);
-  },
+  mounted() {},
   methods: {
     viewPerson() {
       let id = new URL(this.profile.url).pathname.slice(12);

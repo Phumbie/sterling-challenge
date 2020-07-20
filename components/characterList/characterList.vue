@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     checkTotalPages() {
-      console.log("checked");
       if (this.totalPages == 1) {
         this.firstItemOnPage = 1;
         this.lastItemOnPage = this.$store.state.allCharactersCount;
@@ -102,7 +101,6 @@ export default {
       }
     },
     next() {
-      console.log("next called");
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
         this.$store.dispatch("getAllCharacters", this.currentPage);

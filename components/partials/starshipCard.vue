@@ -39,7 +39,6 @@ export default {
   methods: {
     viewStarship() {
       let id = new URL(this.starship.url).pathname.slice(15);
-      console.log(this.starship.url);
       this.$router.push(`/starships/${id}`);
     }
   }

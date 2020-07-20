@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="planet-card p-2" @click="viewPlanet">
+    <div class="planet-card " @click="viewPlanet">
       <img
         class="image"
         style="width: 100%; height: 100%"
@@ -9,7 +9,13 @@
       />
       <div class="planet-name text-center">
         <h5 class="text-center text-white">{{ planet.name }}</h5>
-        <h6 class="text-center text-white">
+        <h6
+          class="text-center text-white"
+          v-if="planet.population === 'unknown'"
+        >
+          {{ planet.population }}
+        </h6>
+        <h6 class="text-center text-white" v-else>
           {{ planet.population | formatAmount }}
         </h6>
         <small class="text-center text-white">{{ planet.climate }}</small>

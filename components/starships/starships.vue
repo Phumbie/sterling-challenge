@@ -64,7 +64,6 @@ export default {
   },
   methods: {
     checkTotalPages() {
-      console.log("checked");
       if (this.totalPages == 1) {
         this.firstItemOnPage = 1;
         this.lastItemOnPage = this.$store.state.allStarshipsCount;
@@ -75,9 +74,7 @@ export default {
       }
     },
     next() {
-      // console.log(this.lastItemOnPage, this.firstItemOnPage);
       if (this.currentPage < this.totalPages) {
-        console.log(this.currentPage, this.totalPages);
         this.currentPage++;
         this.$store.dispatch("getAllStarships", this.currentPage);
         if (this.lastItemOnPage + 10 < this.totalItems) {
@@ -101,7 +98,6 @@ export default {
       this.$store.dispatch("getAllStarships", val.toString()).then(response => {
         this.checkTotalPages();
       });
-      console.log(val);
     }
   }
 };
