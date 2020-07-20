@@ -56,6 +56,15 @@ export default {
   height: 15rem;
 }
 .profile-card {
+  transition: all 0.5s linear;
+  cursor: pointer;
+}
+.profile-card:hover {
+  -webkit-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 7px -1px rgba(0, 0, 0, 0.75);
+}
+.profile-card {
   background-color: #f5f5f5;
   /* width: 40%; */
   min-height: 15rem;

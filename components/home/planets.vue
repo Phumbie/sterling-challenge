@@ -14,20 +14,20 @@
         </template>
       </vue-glide>
     </div>
-    <div class="view-planet-button container mt-3">
-      <Nuxt-Link to="/planets"
-        ><button class="btn view-more">VIEW MORE</button></Nuxt-Link
-      >
+    <div class="container">
+      <Nuxt-Link to="/planets"> <Button /></Nuxt-Link>
     </div>
   </div>
 </template>
 <script>
 import Title from "../partials/title";
 import Planet from "../partials/planetCard";
+import Button from "../partials/button";
 export default {
   components: {
     Title,
-    Planet
+    Planet,
+    Button
   },
   data() {
     return {

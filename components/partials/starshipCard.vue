@@ -13,7 +13,12 @@
           <p>{{ starship.cargo_capacity }}</p>
           <br />
           <div class="star-ship_button mt-2 d-flex">
-            <button class="read ml-auto">Read more →</button>
+            <button
+              class="read ml-auto hvr-overline-from-left"
+              @click="viewStarship"
+            >
+              Read more →
+            </button>
           </div>
         </div>
       </div>
@@ -31,6 +36,14 @@ export default {
   computed: {
     starshipImage() {
       return `/images/starship-${this.image}.jpg`;
+    }
+  },
+  methods: {
+    viewStarship() {
+      let id = new URL(this.starship.url).pathname.slice(15);
+
+      this.$router.push(`/starships/${id}`);
+      // console.log(this.$route);
     }
   }
 };
@@ -59,5 +72,39 @@ export default {
   border-radius: 2px;
   padding: 0.4rem;
   background-color: #bfc1c2;
+  cursor: pointer;
+}
+.star-ship_button {
+  cursor: pointer;
+}
+.hvr-overline-from-left {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+.hvr-overline-from-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  top: 0;
+  background: black;
+  height: 4px;
+  -webkit-transition-property: right;
+  transition-property: right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-overline-from-left:hover:before,
+.hvr-overline-from-left:focus:before,
+.hvr-overline-from-left:active:before {
+  right: 0;
 }
 </style>

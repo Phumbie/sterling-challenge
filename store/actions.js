@@ -78,3 +78,12 @@ export const getSingleCharacter = async function({ commit }, id) {
     console.log(err);
   }
 };
+export const getSingleSpaceship = async function({ commit }, id) {
+  try {
+    let starship = await this.$axios.get(`/starships/${id}`);
+    // console.log(character);
+    commit("GET_SINGLE_STARSHIP", starship);
+  } catch (err) {
+    console.log(err);
+  }
+};

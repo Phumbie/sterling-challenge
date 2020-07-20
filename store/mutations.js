@@ -19,7 +19,7 @@ export const ADD_ALL_STARSHIPS = (state, val) => {
 export const ADD_ALL_CHARACTERS = (state, val) => {
   state.allCharacters = val.data.results;
   state.allCharactersCount = val.data.count;
-  console.log(state.allCharacters);
+  //   console.log(state.allCharacters);
 };
 export const ADD_ALL_PLANETS = (state, val) => {
   state.allPlanets = val.data.results;
@@ -28,4 +28,9 @@ export const ADD_ALL_PLANETS = (state, val) => {
 };
 export const GET_SINGLE_CHARACTER = (state, val) => {
   state.singleCharacter = val.data;
+  //   console.log(state.singleCharacter);
+};
+export const GET_SINGLE_STARSHIP = (state, val) => {
+  state.singleStarship = val.data;
+  console.log(state.singleStarship);
 };

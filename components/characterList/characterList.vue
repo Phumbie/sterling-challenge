@@ -7,6 +7,7 @@
       <div class="d-flex">
         <p class="my-auto mr-2">Filter:</p>
         <el-select v-model="gender" filterable placeholder="select">
+          <el-option label="All" value=""> </el-option>
           <el-option label="Male" value="male"> </el-option>
           <el-option label="Female" value="female"> </el-option>
           <el-option label="Robot" value="robot"> </el-option>
@@ -98,6 +99,8 @@ export default {
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
+        this.firstItemOnPage = this.firstItemOnPage - 10;
+        this.lastItemOnPage = this.lastItemOnPage - 10;
         this.$store.dispatch("getAllCharacters", this.currentPage);
       }
     },

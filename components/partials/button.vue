@@ -1,56 +1,13 @@
 <template>
   <div>
-    <div class="container my-5">
-      <Title title="Popular Characters" />
-      <div class="row mt-4">
-        <div
-          class="col-12 col-md-6"
-          v-for="character in characters"
-          :key="character.name"
-        >
-          <CharacterCard :profile="character" />
-        </div>
-      </div>
-      <Nuxt-Link to="/characters">
-        <Button />
-      </Nuxt-Link>
+    <div class="view-character-button mt-3">
+      <button class="btn view-more hvr-shutter-out-horizontal">
+        VIEW MORE
+      </button>
     </div>
   </div>
 </template>
-<script>
-import Title from "../partials/title";
-import CharacterCard from "../partials/characterCard";
-import Button from "../partials/button";
-export default {
-  components: {
-    Title,
-    CharacterCard,
-    Button
-  },
-  data() {
-    return {
-      // characters: []
-    };
-  },
-  mounted() {
-    this.$store.dispatch("getCharacters");
-  },
-  computed: {
-    characters() {
-      return this.$store.state.characters;
-    }
-  },
-  methods: {}
-};
-</script>
 <style scoped>
-p {
-  color: #a9a9a9;
-}
-h4,
-h6 {
-  color: #353839;
-}
 .view-character-button {
   text-align: center;
 }

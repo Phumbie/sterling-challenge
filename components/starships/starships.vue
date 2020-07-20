@@ -13,6 +13,8 @@
         </div>
       </div>
       <Pagination
+        :firstItemOnPage="firstItemOnPage"
+        :lastItemOnPage="lastItemOnPage"
         @next="next"
         @previous="previous"
         :totalResults="$store.state.allStarshipsCount"
@@ -54,14 +56,26 @@ export default {
   methods: {
     next() {
       if (this.currentPage < this.totalPages) {
-        console.log(this.currentPage);
+        console.log(this.currentPage, this.totalPages);
         this.currentPage++;
         this.$store.dispatch("getAllStarships", this.currentPage);
+      }
+      if (this.lastItemOnPage + 10 < this.totalItems) {
+        console.log(this.lastItemOnPage);
+        // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
+        this.firstItemOnPage = this.lastItemOnPage + 1;
+        this.lastItemOnPage = this.firstItemOnPage + 9;
+      } else {
+        // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
+        this.firstItemOnPage = this.lastItemOnPage + 1;
+        this.lastItemOnPage = this.totalItems;
       }
     },
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
+        this.firstItemOnPage = this.firstItemOnPage - 10;
+        this.lastItemOnPage = this.lastItemOnPage - 10;
         this.$store.dispatch("getAllStarships", this.currentPage);
       }
     },

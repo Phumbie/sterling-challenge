@@ -11,21 +11,20 @@
           <StarshipCard :starship="starship" />
         </div>
       </div>
-      <div class="view-button text-center mt-3">
-        <Nuxt-Link to="/starships"
-          ><button class="btn view-more">VIEW MORE</button>
-        </Nuxt-Link>
-      </div>
+
+      <Nuxt-Link to="starships"><Button /> </Nuxt-Link>
     </div>
   </div>
 </template>
 <script>
 import Title from "../partials/title";
 import StarshipCard from "../partials/starshipCard";
+import Button from "../partials/button";
 export default {
   components: {
     Title,
-    StarshipCard
+    StarshipCard,
+    Button
   },
   mounted() {
     this.$store.dispatch("getStarships");

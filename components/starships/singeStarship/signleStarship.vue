@@ -7,9 +7,8 @@
             style="height: 100%; width: 100%"
             src="/images/logo.png"
             alt="logo"
-          />
-        </div>
-      </Nuxt-Link>
+          /></div
+      ></Nuxt-Link>
       <div class="text-center">
         <div class="header-image">
           <img
@@ -18,7 +17,7 @@
             alt="image"
           />
         </div>
-        <h3 class="text-white text-center mt-3">{{ profile.name }}</h3>
+        <h3 class="text-white text-center mt-3">{{ starship.name }}</h3>
       </div>
     </header>
     <div class="container  mt-4 table-responsive">
@@ -34,43 +33,68 @@
           <tr>
             <th scope="row">1</th>
             <td>Name:</td>
-            <td>{{ profile.name }}</td>
+            <td>{{ starship.name }}</td>
           </tr>
 
           <tr>
             <th scope="row">2</th>
-            <td>Eye Color:</td>
-            <td>{{ profile.eye_color }}</td>
+            <td>Cargo Capacity:</td>
+            <td>{{ starship.cargo_capacity }}</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Hair Color:</td>
-            <td>{{ profile.hair_color }}</td>
+            <td>MGLT:</td>
+            <td>{{ starship.MGLT }}</td>
           </tr>
           <tr>
             <th scope="row">4</th>
-            <td>Skin Color:</td>
-            <td>{{ profile.skin_color }}</td>
+            <td>Consumables:</td>
+            <td>{{ starship.consumables }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
-            <td>Gender:</td>
-            <td>{{ profile.gender }}</td>
+            <td>Cost in credits:</td>
+            <td>{{ starship.cost_in_credits }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
-            <td>Mass:</td>
-            <td>{{ profile.mass }}</td>
+            <td>Crew:</td>
+            <td>{{ starship.crew }}</td>
           </tr>
           <tr>
             <th scope="row">6</th>
-            <td>Height:</td>
-            <td>{{ profile.height }}</td>
+            <td>Hyperdrie Rating:</td>
+            <td>{{ starship.hyperdrive_rating }}</td>
           </tr>
           <tr>
             <th scope="row">7</th>
-            <td>Birth Year:</td>
-            <td>{{ profile.birth_year }}</td>
+            <td>Length:</td>
+            <td>{{ starship.length }}</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Manufacturer:</td>
+            <td>{{ starship.manufacturer }}</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Max Speed:</td>
+            <td>{{ starship.max_atmosphering_speed }}</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Model:</td>
+            <td>{{ starship.model }}</td>
+          </tr>
+          <tr>
+            <th scope="row">11</th>
+            <td>Passengers:</td>
+            <td>{{ starship.passengers }}</td>
+          </tr>
+          <tr>
+            <th scope="row">12</th>
+            <td>Starship Class:</td>
+            <td>{{ starship.starship_class }}</td>
           </tr>
         </tbody>
       </table>
@@ -81,23 +105,23 @@
 export default {
   data() {
     return {
-      image: Math.round(Math.random() * (4 - 1) + 1)
+      image: Math.round(Math.random() * (6 - 1) + 1)
     };
   },
-  mounted() {
-    // console.log();
-    this.$store.dispatch(
-      "getSingleCharacter",
-      this.$route.params.singlecharacter
-    );
-  },
   computed: {
-    profile() {
-      return this.$store.state.singleCharacter;
+    starship() {
+      return this.$store.state.singleStarship;
     },
     profileImage() {
-      return `/images/character-${this.image}.jpg`;
+      return `/images/starship-${this.image}.jpg`;
     }
+  },
+  mounted() {
+    console.log(this.$route.params.singlestarship);
+    this.$store.dispatch(
+      "getSingleSpaceship",
+      this.$route.params.singlestarship
+    );
   }
 };
 </script>
@@ -121,9 +145,6 @@ header {
   left: 1rem;
   height: 2.5rem;
   width: 4rem;
-}
-.table-responsive {
-  border-radius: 5px !important;
 }
 table {
   border-radius: 10px !important;
