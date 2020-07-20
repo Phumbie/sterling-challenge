@@ -70,9 +70,14 @@ export default {
   computed: {
     filteredCharacters() {
       let newList = this.$store.state.allCharacters;
-      return newList.filter(character => {
-        return character.gender.includes(this.gender);
-      });
+      if (this.gender == "") {
+        return newList;
+      } else {
+        let filteredCharacters = newList.filter(character => {
+          return character.gender.toLowerCase() == this.gender.toLowerCase();
+        });
+        return filteredCharacters;
+      }
     },
     totalPages() {
       return Math.ceil(this.$store.state.allCharactersCount / 10);
