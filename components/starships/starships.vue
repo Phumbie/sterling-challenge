@@ -9,10 +9,10 @@
         </div>
       </div>
       <Pagination
+        @previous="previous"
+        @next="next"
         :firstItemOnPage="firstItemOnPage"
         :lastItemOnPage="lastItemOnPage"
-        @next="next"
-        @previous="previous"
         :totalResults="$store.state.allStarshipsCount"
         :totalPgaes="totalPages"
       />
@@ -40,13 +40,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getAllStarships", this.currentPage);
-    if (this.totalPages == 1) {
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = this.$store.state.allStarshipsCount;
-    } else {
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = 10;
-    }
+    this.checkTotalPages();
   },
   computed: {
     allStarShips() {
@@ -54,9 +48,23 @@ export default {
     },
     totalPages() {
       return Math.ceil(this.$store.state.allStarshipsCount / 10);
+    },
+    totalItems() {
+      return this.$store.state.allStarshipsCount;
     }
   },
   methods: {
+    checkTotalPages() {
+      console.log("checked");
+      if (this.totalPages == 1) {
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = this.$store.state.allStarshipsCount;
+      } else {
+        // DEFAULT WHEN PAGE LOADS AND WE HAVE MORE THAN ONE PAGE
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = 10;
+      }
+    },
     next() {
       // console.log(this.lastItemOnPage, this.firstItemOnPage);
       if (this.currentPage < this.totalPages) {
@@ -81,7 +89,9 @@ export default {
       }
     },
     search(val) {
-      this.$store.dispatch("getAllStarships", val.toString());
+      this.$store.dispatch("getAllStarships", val.toString()).then(response => {
+        this.checkTotalPages();
+      });
       console.log(val);
     }
   }

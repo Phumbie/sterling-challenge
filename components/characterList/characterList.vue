@@ -56,14 +56,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getAllCharacters", this.currentPage);
-    if (this.totalPages == 1) {
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = this.$store.state.allCharactersCount;
-    } else {
-      // DEFAULT WHEN PAGE LOADS AND WE HAVE MORE THAN ONE PAGE
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = 10;
-    }
+    this.checkTotalPages();
   },
   computed: {
     filteredCharacters() {
@@ -80,6 +73,17 @@ export default {
     }
   },
   methods: {
+    checkTotalPages() {
+      console.log("checked");
+      if (this.totalPages == 1) {
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = this.$store.state.allCharactersCount;
+      } else {
+        // DEFAULT WHEN PAGE LOADS AND WE HAVE MORE THAN ONE PAGE
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = 10;
+      }
+    },
     next() {
       console.log("next called");
       if (this.currentPage < this.totalPages) {
@@ -106,7 +110,11 @@ export default {
       }
     },
     search(val) {
-      this.$store.dispatch("getAllCharacters", val.toString());
+      this.$store
+        .dispatch("getAllCharacters", val.toString())
+        .then(response => {
+          this.checkTotalPages();
+        });
     }
   }
 };

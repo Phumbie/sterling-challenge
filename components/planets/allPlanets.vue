@@ -41,13 +41,7 @@ export default {
 
   mounted() {
     this.$store.dispatch("getAllPlanets", this.currentPage);
-    if (this.totalPages == 1) {
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = this.$store.state.allPlanetsCount;
-    } else {
-      this.firstItemOnPage = 1;
-      this.lastItemOnPage = 10;
-    }
+    this.checkTotalPages();
   },
   computed: {
     getPlanets() {
@@ -61,6 +55,17 @@ export default {
     }
   },
   methods: {
+    checkTotalPages() {
+      console.log("checked");
+      if (this.totalPages == 1) {
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = this.$store.state.allPlanetsCount;
+      } else {
+        // DEFAULT WHEN PAGE LOADS AND WE HAVE MORE THAN ONE PAGE
+        this.firstItemOnPage = 1;
+        this.lastItemOnPage = 10;
+      }
+    },
     next() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
@@ -85,7 +90,9 @@ export default {
       }
     },
     search(val) {
-      this.$store.dispatch("getAllPlanets", val.toString());
+      this.$store.dispatch("getAllPlanets", val.toString()).then(response => {
+        this.checkTotalPages();
+      });
     }
   }
 };
