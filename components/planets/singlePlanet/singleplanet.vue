@@ -47,7 +47,7 @@
           <tr>
             <th scope="row">3</th>
             <td>Diameter:</td>
-            <td>{{ planet.diameter }}</td>
+            <td>{{ planet.diameter | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">4</th>
@@ -62,7 +62,7 @@
           <tr>
             <th scope="row">5</th>
             <td>Population:</td>
-            <td>{{ planet.population }}</td>
+            <td>{{ planet.population | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">6</th>

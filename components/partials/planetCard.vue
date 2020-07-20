@@ -9,7 +9,9 @@
       />
       <div class="planet-name text-center">
         <h5 class="text-center text-white">{{ planet.name }}</h5>
-        <h6 class="text-center text-white">{{ planet.population }}</h6>
+        <h6 class="text-center text-white">
+          {{ planet.population | formatAmount }}
+        </h6>
         <small class="text-center text-white">{{ planet.climate }}</small>
       </div>
     </div>

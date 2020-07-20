@@ -62,7 +62,7 @@
           <tr>
             <th scope="row">5</th>
             <td>Mass:</td>
-            <td>{{ profile.mass }}</td>
+            <td>{{ profile.mass | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">6</th>

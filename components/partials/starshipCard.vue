@@ -8,10 +8,15 @@
         <div class="star-ship-body">
           <h5 class="star-ship_title">{{ starship.name }}</h5>
           <p class="text-justify">{{ starship.model }}</p>
-          <p>{{ starship.cargo_capacity }}</p>
+          <p>{{ starship.cargo_capacity | formatAmount }}</p>
           <br />
           <div class="star-ship_button mt-2 d-flex">
-            <button class="read ml-auto hvr-overline-from-left" @click="viewStarship">Read more →</button>
+            <button
+              class="read ml-auto hvr-overline-from-left"
+              @click="viewStarship"
+            >
+              Read more →
+            </button>
           </div>
         </div>
       </div>

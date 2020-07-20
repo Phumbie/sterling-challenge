@@ -76,6 +76,10 @@ export default {
     {
       src: "plugins/element",
       ssr: false
+    },
+    {
+      src: "plugins/currency",
+      ssr: false
     }
   ],
   axios: {

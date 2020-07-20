@@ -42,7 +42,7 @@
           <tr>
             <th scope="row">2</th>
             <td>Cargo Capacity:</td>
-            <td>{{ starship.cargo_capacity }}</td>
+            <td>{{ starship.cargo_capacity | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -57,7 +57,7 @@
           <tr>
             <th scope="row">5</th>
             <td>Cost in credits:</td>
-            <td>{{ starship.cost_in_credits }}</td>
+            <td>{{ starship.cost_in_credits | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
@@ -82,7 +82,7 @@
           <tr>
             <th scope="row">9</th>
             <td>Max Speed:</td>
-            <td>{{ starship.max_atmosphering_speed }}</td>
+            <td>{{ starship.max_atmosphering_speed | formatAmount }}</td>
           </tr>
           <tr>
             <th scope="row">10</th>
