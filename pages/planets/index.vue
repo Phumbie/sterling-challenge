@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Planets from "../../components/planets/planets";
+import Planets from "../../components/planets/allPlanets";
 export default {
   components: {
     Planets

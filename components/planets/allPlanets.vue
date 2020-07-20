@@ -4,11 +4,7 @@
     <Title title="Popular Planets" />
     <div class="container">
       <div class="row">
-        <div
-          class="col-6 col-md-3 p-2"
-          v-for="planet in getPlanets"
-          :key="planet.name"
-        >
+        <div class="col-6 col-md-3 p-2" v-for="planet in getPlanets" :key="planet.name">
           <Planets :planet="planet" />
         </div>
       </div>
@@ -69,22 +65,22 @@ export default {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
         this.$store.dispatch("getAllPlanets", this.currentPage);
-      }
-      if (this.lastItemOnPage + 10 < this.totalItems) {
-        // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.firstItemOnPage + 9;
-      } else {
-        // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.totalItems;
+        if (this.lastItemOnPage + 10 < this.totalItems) {
+          // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.firstItemOnPage + 9;
+        } else {
+          // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.totalItems;
+        }
       }
     },
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
         this.firstItemOnPage = this.firstItemOnPage - 10;
-        this.lastItemOnPage = this.lastItemOnPage - 10;
+        this.lastItemOnPage = this.firstItemOnPage + 9;
         this.$store.dispatch("getAllPlanets", this.currentPage);
       }
     },

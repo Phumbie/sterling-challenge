@@ -3,24 +3,17 @@
     <header class="d-flex align-items-center justify-content-center">
       <Nuxt-Link to="/">
         <div class="logo">
-          <img
-            style="height: 100%; width: 100%"
-            src="/images/logo.png"
-            alt="logo"
-          /></div
-      ></Nuxt-Link>
+          <img style="height: 100%; width: 100%" src="/images/logo.png" alt="logo" />
+        </div>
+      </Nuxt-Link>
       <div class="text-center header-card">
         <div class="header-image">
-          <img
-            style="height: 100%; width: 100%"
-            :src="profileImage"
-            alt="image"
-          />
+          <img style="height: 100%; width: 100%" :src="profileImage" alt="image" />
         </div>
-        <h4 class=" text-center mt-3">{{ starship.name }}</h4>
+        <h4 class="text-center mt-3">{{ starship.name }}</h4>
       </div>
     </header>
-    <div class="container  mt-4 table-responsive">
+    <div class="container mt-4 table-responsive">
       <table class="table table-striped table-dark">
         <thead>
           <tr>
@@ -117,7 +110,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.params.singlestarship);
     this.$store.dispatch(
       "getSingleSpaceship",
       this.$route.params.singlestarship
@@ -127,7 +119,7 @@ export default {
 </script>
 <style scoped>
 header {
-  height: 25rem;
+  height: 30rem;
   background-image: url("/images/hero-banner.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -137,11 +129,11 @@ header {
   background-color: white;
   border-radius: 5px;
   padding: 0.5rem;
-  width: 13rem;
+  width: 15rem;
 }
 .header-image {
-  height: 12rem;
-  width: 12rem;
+  /* height: 12rem;
+  width: 12rem; */
   margin: auto;
   /* border-radius: 5px; */
 }

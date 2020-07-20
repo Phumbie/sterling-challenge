@@ -1,14 +1,10 @@
 <template>
   <div>
-    <!-- <Header @search="search" /> -->
+    <Header @search="search" />
     <Title title="Popular Starships" />
     <div class="container">
       <div class="row">
-        <div
-          class="col-md-4"
-          v-for="allStarShip in allStarShips"
-          :key="allStarShip.name"
-        >
+        <div class="col-md-4" v-for="allStarShip in allStarShips" :key="allStarShip.name">
           <Starships :starship="allStarShip" />
         </div>
       </div>
@@ -44,6 +40,13 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getAllStarships", this.currentPage);
+    if (this.totalPages == 1) {
+      this.firstItemOnPage = 1;
+      this.lastItemOnPage = this.$store.state.allStarshipsCount;
+    } else {
+      this.firstItemOnPage = 1;
+      this.lastItemOnPage = 10;
+    }
   },
   computed: {
     allStarShips() {
@@ -55,28 +58,25 @@ export default {
   },
   methods: {
     next() {
-      console.log(this.lastItemOnPage, this.firstItemOnPage);
+      // console.log(this.lastItemOnPage, this.firstItemOnPage);
       if (this.currentPage < this.totalPages) {
         console.log(this.currentPage, this.totalPages);
         this.currentPage++;
         this.$store.dispatch("getAllStarships", this.currentPage);
-      }
-      if (this.lastItemOnPage + 10 < this.totalItems) {
-        console.log(this.lastItemOnPage);
-        // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.firstItemOnPage + 9;
-      } else {
-        // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.totalItems;
+        if (this.lastItemOnPage + 10 < this.totalItems) {
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.firstItemOnPage + 9;
+        } else {
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.totalItems;
+        }
       }
     },
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
         this.firstItemOnPage = this.firstItemOnPage - 10;
-        this.lastItemOnPage = this.lastItemOnPage - 10;
+        this.lastItemOnPage = this.firstItemOnPage + 9;
         this.$store.dispatch("getAllStarships", this.currentPage);
       }
     },

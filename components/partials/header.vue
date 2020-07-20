@@ -1,31 +1,28 @@
 <template>
   <div class="header">
-    <div>
-      <div class="logo">
-        <img
-          style="height: 100%; width: 100%"
-          src="/images/logo.png"
-          alt="logo"
-        />
-      </div>
+    <div class="container">
+      <Nuxt-Link to="/">
+        <div class="logo">
+          <img style="height: 100%; width: 100%" src="/images/logo.png" alt="logo" />
+        </div>
+      </Nuxt-Link>
       <div class="logo-image heading d-flex justify-content-center">
-        <img
-          style="height: 2rem; width: 3.5rem"
-          src="/images/logo.png"
-          alt="logo"
-        />
-        <h5 class="text-white  ml-2 my-auto">Directory</h5>
+        <img style="height: 2rem; width: 2.7rem" src="/images/logo.png" alt="logo" />
+        <h5 class="text-white ml-2 my-auto">Directory</h5>
       </div>
       <hr class="hr-line my-1" />
-      <p class="text-white text-center header-brief mt-3">
+      <!-- <p class="text-white text-center header-brief">
         Find your favorite Characters,Films,Species, Starships and Planets
-      </p>
+      </p>-->
       <!-- <div class="container"> -->
-      <div class="search mt-3">
-        <div class="input-group flex-nowrap">
+      <p
+        class="text-center text-white"
+      >Find your favorite Characters, Films, Species,Starships and Planets</p>
+      <div class="search">
+        <div class="input-group flex-nowrap search">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-wrapping"
-              ><svg
+            <span class="input-group-text" id="addon-wrapping">
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="0.9rem"
                 version="1.1"
@@ -42,13 +39,14 @@
                       fill="#CDC9C9"
                     />
                   </g>
-                </g></svg
-            ></span>
+                </g>
+              </svg>
+            </span>
           </div>
 
           <input
             type="text"
-            class="form-control"
+            class="form-control search"
             placeholder="Enter a search term"
             aria-label="Username"
             aria-describedby="addon-wrapping"
@@ -57,6 +55,7 @@
           />
         </div>
       </div>
+
       <!-- </div> -->
     </div>
   </div>
@@ -80,7 +79,7 @@ export default {
 .header {
   background-image: url("/images/hero-banner.jpg");
 
-  height: 25rem;
+  height: 30rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,15 +94,27 @@ h1 {
   height: 2.5rem;
   width: 4rem;
 }
+.search {
+  width: 1;
+}
 .hr-line {
   background-color: white;
-  width: 10rem;
+  width: 8rem;
   height: 0.1rem;
   margin: 0 auto;
 }
 .header-brief {
-  font-size: 1.2rem;
-  width: 70%;
+  /* font-size: 1.2rem; */
+  /* width: 70%; */
   margin: auto;
+}
+@media only screen and (min-width: 768px) {
+  .search {
+    width: 70%;
+    margin: auto;
+  }
+  .hr-line {
+    width: 10rem;
+  }
 }
 </style>

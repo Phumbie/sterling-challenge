@@ -104,7 +104,7 @@ export default {
 </script>
 <style scoped>
 header {
-  height: 25rem;
+  height: 30rem;
   background-image: url("/images/hero-banner.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -114,10 +114,11 @@ header {
   background-color: white;
   border-radius: 5px;
   padding: 0.5rem;
+  width: 15rem;
 }
 .header-image {
-  height: 12rem;
-  width: 12rem;
+  /* height: 12rem;
+  width: 12rem; */
   margin: auto;
   /* border-radius: 5px; */
 }

@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- <Header @search="search" /> -->
+    <Header @search="search" />
     <Title title="Starwars Characters" />
 
     <div class="container">
       <div class="d-flex">
         <p class="my-auto mr-2">Filter:</p>
         <el-select v-model="gender" filterable placeholder="select">
-          <el-option label="All" value=""> </el-option>
-          <el-option label="Male" value="male"> </el-option>
-          <el-option label="Female" value="female"> </el-option>
-          <el-option label="Robot" value="robot"> </el-option>
+          <el-option label="All" value></el-option>
+          <el-option label="Male" value="male"></el-option>
+          <el-option label="Female" value="female"></el-option>
+          <el-option label="Robot" value="robot"></el-option>
         </el-select>
       </div>
 
@@ -85,22 +85,23 @@ export default {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
         this.$store.dispatch("getAllCharacters", this.currentPage);
-      }
-      if (this.lastItemOnPage + 10 < this.totalItems) {
-        // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.firstItemOnPage + 9;
-      } else {
-        // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
-        this.firstItemOnPage = this.lastItemOnPage + 1;
-        this.lastItemOnPage = this.totalItems;
+
+        if (this.lastItemOnPage + 10 < this.totalItems) {
+          // PASSES IF THE LAST ITEM IS LESS THAN TOTAL MEANING MORE PAGES
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.firstItemOnPage + 9;
+        } else {
+          // PASSES IF LAST ITEM IS GREATER MEANING NO MORE PAGES AFTER THIS ONE
+          this.firstItemOnPage = this.lastItemOnPage + 1;
+          this.lastItemOnPage = this.totalItems;
+        }
       }
     },
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
         this.firstItemOnPage = this.firstItemOnPage - 10;
-        this.lastItemOnPage = this.lastItemOnPage - 10;
+        this.lastItemOnPage = this.firstItemOnPage + 9;
         this.$store.dispatch("getAllCharacters", this.currentPage);
       }
     },

@@ -7,18 +7,11 @@
         </div>
         <div class="star-ship-body">
           <h5 class="star-ship_title">{{ starship.name }}</h5>
-          <p class="text-justify">
-            {{ starship.model }}
-          </p>
+          <p class="text-justify">{{ starship.model }}</p>
           <p>{{ starship.cargo_capacity }}</p>
           <br />
           <div class="star-ship_button mt-2 d-flex">
-            <button
-              class="read ml-auto hvr-overline-from-left"
-              @click="viewStarship"
-            >
-              Read more →
-            </button>
+            <button class="read ml-auto hvr-overline-from-left" @click="viewStarship">Read more →</button>
           </div>
         </div>
       </div>
@@ -43,7 +36,6 @@ export default {
       let id = new URL(this.starship.url).pathname.slice(15);
 
       this.$router.push(`/starships/${id}`);
-      // console.log(this.$route);
     }
   }
 };
@@ -71,7 +63,7 @@ export default {
   border: none;
   border-radius: 2px;
   padding: 0.4rem;
-  background-color: #bfc1c2;
+  background-color: #d3d3d3;
   cursor: pointer;
 }
 .star-ship_button {
