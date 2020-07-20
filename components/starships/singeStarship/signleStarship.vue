@@ -9,7 +9,7 @@
             alt="logo"
           /></div
       ></Nuxt-Link>
-      <div class="text-center">
+      <div class="text-center header-card">
         <div class="header-image">
           <img
             style="height: 100%; width: 100%"
@@ -17,7 +17,7 @@
             alt="image"
           />
         </div>
-        <h3 class="text-white text-center mt-3">{{ starship.name }}</h3>
+        <h4 class=" text-center mt-3">{{ starship.name }}</h4>
       </div>
     </header>
     <div class="container  mt-4 table-responsive">
@@ -132,6 +132,12 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+}
+.header-card {
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 13rem;
 }
 .header-image {
   height: 12rem;

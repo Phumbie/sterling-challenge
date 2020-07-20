@@ -18,7 +18,7 @@
             alt="image"
           />
         </div>
-        <h3 class=" text-center mt-3">{{ profile.name }}</h3>
+        <h3 class=" text-center mt-3">{{ planet.name }}</h3>
       </div>
     </header>
     <div class="container  mt-4 table-responsive">
@@ -34,43 +34,48 @@
           <tr>
             <th scope="row">1</th>
             <td>Name:</td>
-            <td>{{ profile.name }}</td>
+            <td>{{ planet.name }}</td>
           </tr>
 
           <tr>
             <th scope="row">2</th>
-            <td>Eye Color:</td>
-            <td>{{ profile.eye_color }}</td>
+            <td>Climate:</td>
+            <td>{{ planet.climate }}</td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Hair Color:</td>
-            <td>{{ profile.hair_color }}</td>
+            <td>Diameter:</td>
+            <td>{{ planet.diameter }}</td>
           </tr>
           <tr>
             <th scope="row">4</th>
-            <td>Skin Color:</td>
-            <td>{{ profile.skin_color }}</td>
+            <td>Gravity:</td>
+            <td>{{ planet.gravity }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
-            <td>Gender:</td>
-            <td>{{ profile.gender }}</td>
+            <td>Orbital Period:</td>
+            <td>{{ planet.orbital_period }}</td>
           </tr>
           <tr>
             <th scope="row">5</th>
-            <td>Mass:</td>
-            <td>{{ profile.mass }}</td>
+            <td>Population:</td>
+            <td>{{ planet.population }}</td>
           </tr>
           <tr>
             <th scope="row">6</th>
-            <td>Height:</td>
-            <td>{{ profile.height }}</td>
+            <td>Rotation Period:</td>
+            <td>{{ planet.rotation_period }}</td>
           </tr>
           <tr>
             <th scope="row">7</th>
-            <td>Birth Year:</td>
-            <td>{{ profile.birth_year }}</td>
+            <td>Surface water:</td>
+            <td>{{ planet.surface_water }}</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Terrain:</td>
+            <td>{{ planet.terrain }}</td>
           </tr>
         </tbody>
       </table>
@@ -81,22 +86,18 @@
 export default {
   data() {
     return {
-      image: Math.round(Math.random() * (4 - 1) + 1)
+      image: Math.round(Math.random() * (3 - 1) + 1)
     };
   },
   mounted() {
-    // console.log();
-    this.$store.dispatch(
-      "getSingleCharacter",
-      this.$route.params.singlecharacter
-    );
+    this.$store.dispatch("getSinglePlanet", this.$route.params.singlePlanet);
   },
   computed: {
-    profile() {
-      return this.$store.state.singleCharacter;
+    planet() {
+      return this.$store.state.singlePlanet;
     },
     profileImage() {
-      return `/images/character-${this.image}.jpg`;
+      return `/images/planet-${this.image}.jpg`;
     }
   }
 };
@@ -122,7 +123,7 @@ header {
 }
 .logo {
   position: absolute;
-  top: 2rem;
+  top: 1rem;
   left: 1rem;
   height: 2.5rem;
   width: 4rem;

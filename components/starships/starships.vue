@@ -55,6 +55,7 @@ export default {
   },
   methods: {
     next() {
+      console.log(this.lastItemOnPage, this.firstItemOnPage);
       if (this.currentPage < this.totalPages) {
         console.log(this.currentPage, this.totalPages);
         this.currentPage++;

@@ -83,6 +83,8 @@ export default {
     previous() {
       if (this.currentPage > 1) {
         this.currentPage--;
+        this.firstItemOnPage = this.firstItemOnPage - 10;
+        this.lastItemOnPage = this.lastItemOnPage - 10;
         this.$store.dispatch("getAllPlanets", this.currentPage);
       }
     },

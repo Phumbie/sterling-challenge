@@ -32,5 +32,9 @@ export const GET_SINGLE_CHARACTER = (state, val) => {
 };
 export const GET_SINGLE_STARSHIP = (state, val) => {
   state.singleStarship = val.data;
-  console.log(state.singleStarship);
+  //   console.log(state.singleStarship);
+};
+export const GET_SINGLE_PLANET = (state, val) => {
+  state.singlePlanet = val.data;
+  console.log(state.singlePlanet);
 };

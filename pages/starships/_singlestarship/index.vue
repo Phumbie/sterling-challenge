@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Singlespaceship />
+    <single-spaceship />
   </div>
 </template>
 <script>
 import Singlespaceship from "../../../components/starships/singeStarship/signleStarship";
 export default {
   components: {
-    Singlespaceship
+    "single-spaceship": Singlespaceship
   }
 };
 </script>

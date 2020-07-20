@@ -1,6 +1,11 @@
 <template>
-  <div></div>
+  <single-planet />
 </template>
 <script>
-export default {};
+import Singleplanet from "../../../components/planets/singlePlanet/singleplanet";
+export default {
+  components: {
+    "single-planet": Singleplanet
+  }
+};
 </script>

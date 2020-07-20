@@ -87,3 +87,12 @@ export const getSingleSpaceship = async function({ commit }, id) {
     console.log(err);
   }
 };
+export const getSinglePlanet = async function({ commit }, id) {
+  try {
+    let planet = await this.$axios.get(`/planets/${id}`);
+    // console.log(character);
+    commit("GET_SINGLE_PLANET", planet);
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -9,7 +9,8 @@ const state = () => ({
   allPlanets: [],
   allPlanetsCount: "",
   singleCharacter: "",
-  singleStarship: ""
+  singleStarship: "",
+  singlePlanet: ""
 });
 
 export default state;
