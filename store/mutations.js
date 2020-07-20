@@ -29,3 +29,7 @@ export const GET_SINGLE_STARSHIP = (state, val) => {
 export const GET_SINGLE_PLANET = (state, val) => {
   state.singlePlanet = val.data;
 };
+
+export const SET_LOADING = (state, val) => {
+  state.loading = val;
+};

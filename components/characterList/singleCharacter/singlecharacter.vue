@@ -1,5 +1,7 @@
 <template>
   <div>
+    <loader :display="loading" />
+
     <header class="d-flex align-items-center justify-content-center">
       <Nuxt-Link to="/">
         <div class="logo">
@@ -97,6 +99,9 @@ export default {
     },
     profileImage() {
       return `/images/character-${this.image}.jpg`;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   }
 };

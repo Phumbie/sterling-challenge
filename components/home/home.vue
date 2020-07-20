@@ -1,5 +1,7 @@
 <template>
   <div>
+    <loader :display="loading" />
+
     <Header />
     <StarShip />
     <Planets />
@@ -17,6 +19,11 @@ export default {
     StarShip,
     Planets,
     Characters
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    }
   }
 };
 </script>

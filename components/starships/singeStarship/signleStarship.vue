@@ -1,14 +1,24 @@
 <template>
   <div>
+    <loader :display="loading" />
+
     <header class="d-flex align-items-center justify-content-center">
       <Nuxt-Link to="/">
         <div class="logo">
-          <img style="height: 100%; width: 100%" src="/images/logo.png" alt="logo" />
+          <img
+            style="height: 100%; width: 100%"
+            src="/images/logo.png"
+            alt="logo"
+          />
         </div>
       </Nuxt-Link>
       <div class="text-center header-card">
         <div class="header-image">
-          <img style="height: 100%; width: 100%" :src="profileImage" alt="image" />
+          <img
+            style="height: 100%; width: 100%"
+            :src="profileImage"
+            alt="image"
+          />
         </div>
         <h4 class="text-center mt-3">{{ starship.name }}</h4>
       </div>
@@ -107,6 +117,9 @@ export default {
     },
     profileImage() {
       return `/images/starship-${this.image}.jpg`;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   mounted() {

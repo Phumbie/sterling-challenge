@@ -1,10 +1,16 @@
 <template>
   <div>
+    <loader :display="loading" />
+
     <Header @search="search" />
     <Title title="Popular Planets" />
     <div class="container">
       <div class="row">
-        <div class="col-6 col-md-3 p-2" v-for="planet in getPlanets" :key="planet.name">
+        <div
+          class="col-6 col-md-3 p-2"
+          v-for="planet in getPlanets"
+          :key="planet.name"
+        >
           <Planets :planet="planet" />
         </div>
       </div>
@@ -52,6 +58,9 @@ export default {
     },
     totalItems() {
       return this.$store.state.allPlanetsCount;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {

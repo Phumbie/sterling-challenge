@@ -10,17 +10,17 @@
 </template>
 <script>
 export default {
-  props: ['display'],
+  props: ["display"],
   watch: {
     display() {
       if (this.display == true) {
-        document.body.style.overflow = 'hidden'
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'initial'
+        document.body.style.overflow = "initial";
       }
     }
   }
-}
+};
 </script>
 <style scoped>
 * {
@@ -70,6 +70,11 @@ export default {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media only screen and (min-width: 768px) {
+  .lds-ring div {
+    left: 50%;
   }
 }
 </style>

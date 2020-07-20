@@ -3,6 +3,7 @@
     <Header @search="search" />
     <Title title="Starwars Characters" />
 
+    <!-- <SkeletonLine /> -->
     <div class="container">
       <div class="d-flex">
         <p class="my-auto mr-2">Filter:</p>
@@ -14,6 +15,7 @@
         </el-select>
       </div>
 
+      <loader :display="loading" />
       <div class="row" v-if="$store.state.allCharacters">
         <div
           class="col-12 col-md-6"
@@ -39,6 +41,7 @@ import Header from "../partials/header";
 import Title from "../partials/title";
 import CharacterCard from "../partials/characterCard";
 import Pagination from "../partials/pagination";
+
 export default {
   components: {
     Header,
@@ -52,10 +55,16 @@ export default {
       currentPage: 1,
       lastItemOnPage: null,
       firstItemOnPage: null
+      // loading: true
     };
   },
   mounted() {
     this.$store.dispatch("getAllCharacters", this.currentPage);
+    // .then(response => {
+    //   alert("response successful").catch(e => {
+    //     alert("error");
+    //   });
+    // });
     this.checkTotalPages();
   },
   computed: {
@@ -70,6 +79,9 @@ export default {
     },
     totalItems() {
       return this.$store.state.allCharactersCount;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {

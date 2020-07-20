@@ -1,10 +1,16 @@
 <template>
   <div>
+    <loader :display="loading" />
+
     <Header @search="search" />
     <Title title="Popular Starships" />
     <div class="container">
       <div class="row">
-        <div class="col-md-4" v-for="allStarShip in allStarShips" :key="allStarShip.name">
+        <div
+          class="col-md-4"
+          v-for="allStarShip in allStarShips"
+          :key="allStarShip.name"
+        >
           <Starships :starship="allStarShip" />
         </div>
       </div>
@@ -51,6 +57,9 @@ export default {
     },
     totalItems() {
       return this.$store.state.allStarshipsCount;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {
