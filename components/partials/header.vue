@@ -3,11 +3,19 @@
     <div class="container">
       <Nuxt-Link to="/">
         <div class="logo">
-          <img style="height: 100%; width: 100%" src="/images/logo.png" alt="logo" />
+          <img
+            style="height: 100%; width: 100%"
+            src="/images/logo.png"
+            alt="logo"
+          />
         </div>
       </Nuxt-Link>
       <div class="logo-image heading d-flex justify-content-center">
-        <img style="height: 2rem; width: 2.7rem" src="/images/logo.png" alt="logo" />
+        <img
+          style="height: 2rem; width: 2.7rem"
+          src="/images/logo.png"
+          alt="logo"
+        />
         <h5 class="text-white ml-2 my-auto">Directory</h5>
       </div>
       <hr class="hr-line my-1" />
@@ -15,10 +23,10 @@
         Find your favorite Characters,Films,Species, Starships and Planets
       </p>-->
       <!-- <div class="container"> -->
-      <p
-        class="text-center text-white"
-      >Find your favorite Characters, Films, Species,Starships and Planets</p>
-      <div class="search">
+      <p class="text-center text-white">
+        Find your favorite Characters, Films, Species,Starships and Planets
+      </p>
+      <div class="search" :class="{ display: display }">
         <div class="input-group flex-nowrap search">
           <div class="input-group-prepend">
             <span class="input-group-text" id="addon-wrapping">
@@ -62,9 +70,11 @@
 </template>
 <script>
 export default {
+  props: ["display"],
   data() {
     return {
-      search: ""
+      search: "",
+      display: false
     };
   },
   methods: {
@@ -116,5 +126,8 @@ h1 {
   .hr-line {
     width: 10rem;
   }
+}
+.display {
+  display: none;
 }
 </style>

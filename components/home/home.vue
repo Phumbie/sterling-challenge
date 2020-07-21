@@ -2,7 +2,7 @@
   <div>
     <!-- <loader :display="loading" /> -->
 
-    <Header />
+    <Header :display="true" />
     <StarShip />
     <Planets />
     <Characters />
