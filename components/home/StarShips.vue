@@ -3,6 +3,13 @@
     <Title title="Popular Starships" />
     <div class="container">
       <div class="row">
+        <div class="col-12 col-md-4" v-for="i in 6" :key="i">
+          <SkeletonLine :height="`20rem`" :width="`100%`" v-if="loading" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
         <div
           class="col-12 col-md-4"
           v-for="starship in starShips"
@@ -32,6 +39,9 @@ export default {
   computed: {
     starShips() {
       return this.$store.state.starship;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   }
 };

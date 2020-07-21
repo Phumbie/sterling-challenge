@@ -2,6 +2,7 @@
   <div class="mt-5">
     <Title title="Popular Planets" />
     <div class="container text-center">
+      <SkeletonLine :width="`100%`" :height="`15rem`" v-if="loading" />
       <vue-glide :options="options" v-if="planets.length">
         <vue-glide-slide v-for="planet in planets" :key="planet.name">
           <Planet :planet="planet" />
@@ -65,6 +66,9 @@ export default {
     },
     planetImage() {
       return `/images/planet-${this.image}.jpg`;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   }
 };

@@ -2,6 +2,11 @@
   <div>
     <div class="container my-5">
       <Title title="Popular Characters" />
+      <div class="row" v-if="loading">
+        <div class="col-12 col-md-6" v-for="i in 4" :key="i">
+          <SkeletonLine :width="`100%`" :height="`15rem`" />
+        </div>
+      </div>
       <div class="row mt-4">
         <div
           class="col-12 col-md-6"
@@ -38,6 +43,9 @@ export default {
   computed: {
     characters() {
       return this.$store.state.characters;
+    },
+    loading() {
+      return this.$store.state.loading;
     }
   },
   methods: {}
