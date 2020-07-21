@@ -1,25 +1,28 @@
 <template>
   <div>
     <Title title="Popular Starships" />
-    <div class="container">
+
+    <div class="container" v-if="loading">
       <div class="row">
         <div class="col-12 col-md-4" v-for="i in 6" :key="i">
-          <SkeletonLine :height="`20rem`" :width="`100%`" v-if="loading" />
+          <SkeletonLine :height="`20rem`" :width="`100%`" />
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div
-          class="col-12 col-md-4"
-          v-for="starship in starShips"
-          :key="starship.name"
-        >
-          <StarshipCard :starship="starship" />
+    <div v-else>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-12 col-md-4"
+            v-for="starship in starShips"
+            :key="starship.name"
+          >
+            <StarshipCard :starship="starship" />
+          </div>
         </div>
-      </div>
 
-      <Nuxt-Link to="starships"><Button /> </Nuxt-Link>
+        <Nuxt-Link to="starships" v-if="!loading"><Button /> </Nuxt-Link>
+      </div>
     </div>
   </div>
 </template>

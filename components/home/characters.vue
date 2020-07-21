@@ -1,12 +1,16 @@
 <template>
   <div>
-    <div class="container my-5">
-      <Title title="Popular Characters" />
-      <div class="row" v-if="loading">
+    <Title title="Popular Characters" />
+
+    <div class="container" v-if="loading">
+      <div class="row">
         <div class="col-12 col-md-6" v-for="i in 4" :key="i">
           <SkeletonLine :width="`100%`" :height="`15rem`" />
         </div>
       </div>
+    </div>
+
+    <div class="container my-5" v-else>
       <div class="row mt-4">
         <div
           class="col-12 col-md-6"
@@ -16,7 +20,7 @@
           <CharacterCard :profile="character" />
         </div>
       </div>
-      <Nuxt-Link to="/characters">
+      <Nuxt-Link to="/characters" v-if="!loading">
         <Button />
       </Nuxt-Link>
     </div>

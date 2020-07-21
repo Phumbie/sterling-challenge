@@ -1,22 +1,28 @@
 <template>
   <div class="mt-5">
     <Title title="Popular Planets" />
-    <div class="container text-center">
-      <SkeletonLine :width="`100%`" :height="`15rem`" v-if="loading" />
-      <vue-glide :options="options" v-if="planets.length">
-        <vue-glide-slide v-for="planet in planets" :key="planet.name">
-          <Planet :planet="planet" />
-        </vue-glide-slide>
-        <template slot="control" class="control glide__bullets">
-          <button data-glide-dir="=0" class="button-control"></button>
-          <button data-glide-dir="=1" class="button button-control"></button>
-          <button data-glide-dir="=2" class="button button-control"></button>
-          <button data-glide-dir="=3" class="button button-control"></button>
-        </template>
-      </vue-glide>
+
+    <div class="container" v-if="loading">
+      <SkeletonLine :width="`100%`" :height="`15rem`" />
     </div>
-    <div class="container">
-      <Nuxt-Link to="/planets"> <Button /></Nuxt-Link>
+
+    <div v-else>
+      <div class="container text-center">
+        <vue-glide :options="options" v-if="planets.length">
+          <vue-glide-slide v-for="planet in planets" :key="planet.name">
+            <Planet :planet="planet" />
+          </vue-glide-slide>
+          <template slot="control" class="control glide__bullets">
+            <button data-glide-dir="=0" class="button-control"></button>
+            <button data-glide-dir="=1" class="button button-control"></button>
+            <button data-glide-dir="=2" class="button button-control"></button>
+            <button data-glide-dir="=3" class="button button-control"></button>
+          </template>
+        </vue-glide>
+      </div>
+      <div class="container">
+        <Nuxt-Link to="/planets"> <Button /></Nuxt-Link>
+      </div>
     </div>
   </div>
 </template>
