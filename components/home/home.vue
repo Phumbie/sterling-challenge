@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loader :display="loading" />
+    <!-- <loader :display="loading" /> -->
 
     <Header />
     <StarShip />
@@ -21,9 +21,9 @@ export default {
     Characters
   },
   computed: {
-    loading() {
-      return this.$store.state.loading;
-    }
+    // loading() {
+    //   return this.$store.state.loading;
+    // }
   }
 };
 </script>
